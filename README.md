@@ -22,7 +22,7 @@ class App = () => (
 ```
 
 | Prop | Type | Default |
-| -- | -- | -- | -- |
+| -- | -- | -- |
 | desktop | boolean | no
 | laptop  | boolean | no
 | tablet | boolean | no
