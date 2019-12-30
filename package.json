@@ -1,6 +1,6 @@
 {
   "name": "@bnt-ar/react-render-at",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": false,
   "description": "Render components dynamically based on the device",
   "main": "dist/index.js",
@@ -16,7 +16,13 @@
     "lint:fix": "eslint tests/* src/* webpack.config.js --fix"
   },
   "author": "Brave New Technology",
-  "keywords": ["react", "render", "dynamic", "HOC", "component"],
+  "keywords": [
+    "react",
+    "render",
+    "dynamic",
+    "HOC",
+    "component"
+  ],
   "license": "MIT",
   "publishConfig": {
     "access": "public"
@@ -47,7 +53,11 @@
     "webpack-cli": "^3.3.10"
   },
   "jest": {
-    "testPathIgnorePatterns": ["<rootDir>/tests/mocks/"],
-    "collectCoverageFrom": ["<rootDir>/src/**"]
+    "testPathIgnorePatterns": [
+      "<rootDir>/tests/mocks/"
+    ],
+    "collectCoverageFrom": [
+      "<rootDir>/src/**"
+    ]
   }
 }
