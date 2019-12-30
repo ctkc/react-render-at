@@ -252,9 +252,9 @@ describe('When RenderAt receive "desktop" and "fragment" props', () => {
 describe('When component will unmount', () => {
   it('it should not call any remove method if any prop is passed', () => {
     const desktopRemoveSpy = jest.spyOn(Desktop.prototype, 'remove')
-    const laptopRemoveSpy  = jest.spyOn(Laptop.prototype, 'remove')
-    const tabletRemoveSpy  = jest.spyOn(Tablet.prototype, 'remove')
-    const mobileRemoveSpy  = jest.spyOn(Mobile.prototype, 'remove')
+    const laptopRemoveSpy = jest.spyOn(Laptop.prototype, 'remove')
+    const tabletRemoveSpy = jest.spyOn(Tablet.prototype, 'remove')
+    const mobileRemoveSpy = jest.spyOn(Mobile.prototype, 'remove')
 
     const component = mount(
       <RenderAt>Content</RenderAt>
@@ -270,9 +270,9 @@ describe('When component will unmount', () => {
 
   it('it should call remove method of every device passed as a prop', () => {
     const desktopRemoveSpy = jest.spyOn(Desktop.prototype, 'remove')
-    const laptopRemoveSpy  = jest.spyOn(Laptop.prototype, 'remove')
-    const tabletRemoveSpy  = jest.spyOn(Tablet.prototype, 'remove')
-    const mobileRemoveSpy  = jest.spyOn(Mobile.prototype, 'remove')
+    const laptopRemoveSpy = jest.spyOn(Laptop.prototype, 'remove')
+    const tabletRemoveSpy = jest.spyOn(Tablet.prototype, 'remove')
+    const mobileRemoveSpy = jest.spyOn(Mobile.prototype, 'remove')
 
     const component = mount(
       <RenderAt desktop laptop tablet mobile>Content</RenderAt>

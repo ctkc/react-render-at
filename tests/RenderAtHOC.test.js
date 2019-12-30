@@ -6,7 +6,7 @@ import Desktop from '../src/Desktop'
 import Laptop from '../src/Laptop'
 import Tablet from '../src/Tablet'
 import Mobile from '../src/Mobile'
-import RenderAt from '../src/RenderAtComponent'
+
 configure({ adapter: new Adapter() })
 
 describe('RenderAtHOC isDesktop prop test', () => {
