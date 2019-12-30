@@ -12,7 +12,8 @@
 There are two ways you can use the package:  
   
 - Via component  
-```  
+```js
+import React from 'react'
 import {RenderAt} from 'react-render-at'  
   
 class App = () => (  
@@ -32,7 +33,8 @@ class App = () => (
 
 - Via High Order Component
 
-```  
+```js
+import React from 'react'
 import RenderAtHOC from 'react-render-at'  
   
 class App = props => (  
