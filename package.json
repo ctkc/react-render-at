@@ -1,5 +1,5 @@
 {
-  "name": "react-render-at",
+  "name": "@bnt-ar/react-render-at",
   "version": "0.0.1",
   "private": false,
   "description": "Render components dynamically based on the device",
