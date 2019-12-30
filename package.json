@@ -19,7 +19,7 @@
   "keywords": ["react", "render", "dynamic", "HOC", "component"],
   "license": "MIT",
   "publishConfig": {
-    "access": "restricted"
+    "access": "public"
   },
   "peerDependencies": {
     "react": "^16.12.0",
