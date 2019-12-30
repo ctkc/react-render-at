@@ -64,19 +64,19 @@ class RenderAtComponent extends Component {
     const { desktop, laptop, tablet, mobile } = this.props
 
     if (desktop && this.desktop) {
-      this.desktop.remove()
+      this.desktop.unsubscribe()
     }
 
     if (laptop && this.laptop) {
-      this.laptop.remove()
+      this.laptop.unsubscribe()
     }
 
     if (tablet && this.tablet) {
-      this.tablet.remove()
+      this.tablet.unsubscribe()
     }
 
     if (mobile && this.mobile) {
-      this.mobile.remove()
+      this.mobile.unsubscribe()
     }
   }
 

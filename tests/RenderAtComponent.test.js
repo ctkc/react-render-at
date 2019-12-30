@@ -9,51 +9,13 @@ import Mobile from '../src/Mobile'
 
 configure({ adapter: new Adapter() })
 
-describe('When RenderAt does not receive any prop or receive "all"', () => {
-  it('it should render the content in all devices', () => {
-    Object.defineProperty(window, 'matchMedia', {
-      writable: true,
-      value: jest.fn().mockImplementation(query => ({
-        matches: query === 'screen and (min-width: 0)',
-        media: query,
-        onchange: null,
-        addListener: jest.fn(), // deprecated
-        removeListener: jest.fn(), // deprecated
-        addEventListener: jest.fn(),
-        removeEventListener: jest.fn(),
-        dispatchEvent: jest.fn()
-      }))
-    })
-
+describe('When RenderAt does not receive any prop or receive', () => {
+  it('it should not render content', () => {
     const component = mount(
       <RenderAt>Content</RenderAt>
     )
 
-    expect(component.html()).toBe('<div>Content</div>')
-  })
-})
-
-describe('When RenderAt receive "fragment" prop', () => {
-  it('it should render just plain content', () => {
-    Object.defineProperty(window, 'matchMedia', {
-      writable: true,
-      value: jest.fn().mockImplementation(query => ({
-        matches: query === 'screen and (min-width: 0)',
-        media: query,
-        onchange: null,
-        addListener: jest.fn(), // deprecated
-        removeListener: jest.fn(), // deprecated
-        addEventListener: jest.fn(),
-        removeEventListener: jest.fn(),
-        dispatchEvent: jest.fn()
-      }))
-    })
-
-    const component = mount(
-      <RenderAt fragment>Content</RenderAt>
-    )
-
-    expect(component.html()).toBe('Content')
+    expect(component.text()).toBe('')
   })
 })
 
@@ -251,10 +213,10 @@ describe('When RenderAt receive "desktop" and "fragment" props', () => {
 
 describe('When component will unmount', () => {
   it('it should not call any remove method if any prop is passed', () => {
-    const desktopRemoveSpy = jest.spyOn(Desktop.prototype, 'remove')
-    const laptopRemoveSpy = jest.spyOn(Laptop.prototype, 'remove')
-    const tabletRemoveSpy = jest.spyOn(Tablet.prototype, 'remove')
-    const mobileRemoveSpy = jest.spyOn(Mobile.prototype, 'remove')
+    const desktopRemoveSpy = jest.spyOn(Desktop.prototype, 'unsubscribe')
+    const laptopRemoveSpy = jest.spyOn(Laptop.prototype, 'unsubscribe')
+    const tabletRemoveSpy = jest.spyOn(Tablet.prototype, 'unsubscribe')
+    const mobileRemoveSpy = jest.spyOn(Mobile.prototype, 'unsubscribe')
 
     const component = mount(
       <RenderAt>Content</RenderAt>
@@ -269,10 +231,10 @@ describe('When component will unmount', () => {
   })
 
   it('it should call remove method of every device passed as a prop', () => {
-    const desktopRemoveSpy = jest.spyOn(Desktop.prototype, 'remove')
-    const laptopRemoveSpy = jest.spyOn(Laptop.prototype, 'remove')
-    const tabletRemoveSpy = jest.spyOn(Tablet.prototype, 'remove')
-    const mobileRemoveSpy = jest.spyOn(Mobile.prototype, 'remove')
+    const desktopRemoveSpy = jest.spyOn(Desktop.prototype, 'unsubscribe')
+    const laptopRemoveSpy = jest.spyOn(Laptop.prototype, 'unsubscribe')
+    const tabletRemoveSpy = jest.spyOn(Tablet.prototype, 'unsubscribe')
+    const mobileRemoveSpy = jest.spyOn(Mobile.prototype, 'unsubscribe')
 
     const component = mount(
       <RenderAt desktop laptop tablet mobile>Content</RenderAt>

@@ -3,6 +3,10 @@ import PropTypes from 'prop-types'
 import RenderAt from '../../src/RenderAtHOC'
 
 class Page extends Component {
+  dummyMethod () {
+    return true
+  }
+
   render () {
     return (
       <div className='app'>

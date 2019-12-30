@@ -6,6 +6,7 @@ import Desktop from '../src/Desktop'
 import Laptop from '../src/Laptop'
 import Tablet from '../src/Tablet'
 import Mobile from '../src/Mobile'
+import Page from './mocks/Page'
 
 configure({ adapter: new Adapter() })
 
@@ -75,10 +76,10 @@ describe('RenderAtHOC isLaptop prop test', () => {
 
 describe('When component will unmount', () => {
   it('it should call remove method of every device', () => {
-    const desktopRemoveSpy = jest.spyOn(Desktop.prototype, 'remove')
-    const laptopRemoveSpy = jest.spyOn(Laptop.prototype, 'remove')
-    const tabletRemoveSpy = jest.spyOn(Tablet.prototype, 'remove')
-    const mobileRemoveSpy = jest.spyOn(Mobile.prototype, 'remove')
+    const desktopRemoveSpy = jest.spyOn(Desktop.prototype, 'unsubscribe')
+    const laptopRemoveSpy = jest.spyOn(Laptop.prototype, 'unsubscribe')
+    const tabletRemoveSpy = jest.spyOn(Tablet.prototype, 'unsubscribe')
+    const mobileRemoveSpy = jest.spyOn(Mobile.prototype, 'unsubscribe')
 
     const component = mount(<App/>)
 
@@ -88,5 +89,14 @@ describe('When component will unmount', () => {
     expect(laptopRemoveSpy).toBeCalledTimes(1)
     expect(tabletRemoveSpy).toBeCalledTimes(1)
     expect(mobileRemoveSpy).toBeCalledTimes(1)
+  })
+})
+
+describe('When ref is passed', () => {
+  it('it should return the child component ref', () => {
+    const component = mount(<App/>)
+
+    expect(component.find(Page)).toHaveLength(1)
+    expect(component.instance().pageRef.dummyMethod()).toBe(true)
   })
 })

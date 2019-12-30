@@ -48,9 +48,9 @@ describe('When onChange method is called', () => {
 
 describe('When remove method is called', () => {
   it('is should remove ResizeListener instance and unbind resize event', () => {
-    const desktopSpy = jest.spyOn(Desktop.prototype, 'remove')
+    const desktopSpy = jest.spyOn(Desktop.prototype, 'unsubscribe')
 
-    desktop.remove()
+    desktop.unsubscribe()
 
     expect(desktopSpy).toBeCalledTimes(1)
     expect(desktop.resizeListener).toBe(null)

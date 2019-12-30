@@ -1,11 +1,12 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Desktop from './Desktop'
 import Laptop from './Laptop'
 import Tablet from './Tablet'
 import Mobile from './Mobile'
 
 const RenderAtHOC = Component => {
-  return class WrapperComponent extends React.Component {
+  class WrappedComponent extends React.Component {
     constructor () {
       super()
 
@@ -43,16 +44,17 @@ const RenderAtHOC = Component => {
     }
 
     componentWillUnmount () {
-      this.desktop.remove()
-      this.laptop.remove()
-      this.tablet.remove()
-      this.mobile.remove()
+      this.desktop.unsubscribe()
+      this.laptop.unsubscribe()
+      this.tablet.unsubscribe()
+      this.mobile.unsubscribe()
     }
 
     render () {
       const { isDesktop, isLaptop, isTablet, isMobile } = this.state
 
       return <Component
+        ref={this.props.forwardedRef}
         isDesktop={isDesktop}
         isLaptop={isLaptop}
         isTablet={isTablet}
@@ -61,6 +63,20 @@ const RenderAtHOC = Component => {
       />
     }
   }
+
+  WrappedComponent.propTypes = {
+    forwardedRef: PropTypes.any
+  }
+
+  function forwardRef (props, ref) {
+    return <WrappedComponent {...props} forwardedRef={ref} />
+  }
+
+  // Better name for DevTools.
+  const name = Component.displayName || Component.name
+  forwardRef.displayName = `WrappedComponent(${name})`
+
+  return React.forwardRef(forwardRef)
 }
 
 export default RenderAtHOC

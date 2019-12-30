@@ -22,9 +22,10 @@ class Device {
   /**
    * Remove instance and resize event.
    */
-  remove () {
+  unsubscribe () {
     this.resizeListener.removeEventListener()
     this.resizeListener = null
+    this.listener = () => {}
   }
 
   /**
