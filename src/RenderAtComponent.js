@@ -83,7 +83,7 @@ class RenderAtComponent extends Component {
   setMatching () {
     const { isDesktop, isLaptop, isTablet, isMobile } = this.state
 
-    this.setState({ isMatching: isDesktop || isLaptop || isTablet || isMobile || true })
+    this.setState({ isMatching: isDesktop || isLaptop || isTablet || isMobile })
   }
 
   render () {
