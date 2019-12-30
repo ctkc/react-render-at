@@ -4,6 +4,10 @@
   "private": false,
   "description": "Render components dynamically based on the device",
   "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BNT-AR/react-render-at"
+  },
   "scripts": {
     "publish": "rm -rf ./dist && webpack",
     "test": "jest --coverage",
