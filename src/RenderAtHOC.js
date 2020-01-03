@@ -7,8 +7,12 @@ import Mobile from './Mobile'
 
 const RenderAtHOC = Component => {
   class WrappedComponent extends React.Component {
-    constructor () {
-      super()
+    /**
+     * @constructor
+     * @param props
+     */
+    constructor (props) {
+      super(props)
 
       this.desktop = null
       this.laptop = null
@@ -23,6 +27,9 @@ const RenderAtHOC = Component => {
       }
     }
 
+    /**
+     * Subscribe to resize event in every device.
+     */
     componentDidMount () {
       this.desktop = new Desktop().onChange(isMatching => {
         this.setState({ isDesktop: isMatching })
@@ -39,10 +46,11 @@ const RenderAtHOC = Component => {
       this.mobile = new Mobile().onChange(isMatching => {
         this.setState({ isMobile: isMatching })
       })
-
-      window.dispatchEvent(new Event('resize'))
     }
 
+    /**
+     * Unsubscribe from every device.
+     */
     componentWillUnmount () {
       this.desktop.unsubscribe()
       this.laptop.unsubscribe()

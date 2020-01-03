@@ -42,6 +42,8 @@ class Device {
   onChange (listener) {
     this.listener = listener
 
+    this.update()
+
     return this
   }
 }

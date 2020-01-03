@@ -35,6 +35,8 @@ describe('When RenderAt receive "mobile" prop', () => {
       }))
     })
 
+    window.innerWidth = 767
+
     const component = mount(
       <RenderAt mobile>Content</RenderAt>
     )
@@ -58,6 +60,8 @@ describe('When RenderAt receive "mobile" and "fragment" props', () => {
         dispatchEvent: jest.fn()
       }))
     })
+
+    window.innerWidth = 767
 
     const component = mount(
       <RenderAt mobile fragment>Content</RenderAt>
@@ -83,6 +87,8 @@ describe('When RenderAt receive "tablet" prop', () => {
       }))
     })
 
+    window.innerWidth = 1023
+
     const component = mount(
       <RenderAt tablet>Content</RenderAt>
     )
@@ -106,6 +112,8 @@ describe('When RenderAt receive "tablet" and "fragment" props', () => {
         dispatchEvent: jest.fn()
       }))
     })
+
+    window.innerWidth = 1023
 
     const component = mount(
       <RenderAt tablet fragment>Content</RenderAt>
@@ -131,6 +139,8 @@ describe('When RenderAt receive "laptop" prop', () => {
       }))
     })
 
+    window.innerWidth = 1199
+
     const component = mount(
       <RenderAt laptop>Content</RenderAt>
     )
@@ -154,6 +164,8 @@ describe('When RenderAt receive "laptop" and "fragment" props', () => {
         dispatchEvent: jest.fn()
       }))
     })
+
+    window.innerWidth = 1199
 
     const component = mount(
       <RenderAt laptop fragment>Content</RenderAt>
@@ -179,6 +191,8 @@ describe('When RenderAt receive "desktop" prop', () => {
       }))
     })
 
+    window.innerWidth = 1200
+
     const component = mount(
       <RenderAt desktop>Content</RenderAt>
     )
@@ -202,6 +216,8 @@ describe('When RenderAt receive "desktop" and "fragment" props', () => {
         dispatchEvent: jest.fn()
       }))
     })
+
+    window.innerWidth = 1200
 
     const component = mount(
       <RenderAt desktop fragment>Content</RenderAt>

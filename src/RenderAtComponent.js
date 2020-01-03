@@ -28,7 +28,7 @@ class RenderAtComponent extends Component {
   }
 
   /**
-   *
+   * Subscribe to resize event in every device.
    */
   componentDidMount () {
     if (this.props.desktop) {
@@ -54,12 +54,11 @@ class RenderAtComponent extends Component {
         this.setState({ isMobile: isMatching }, () => { this.setMatching() })
       })
     }
-
-    window.dispatchEvent(new Event('resize'))
-
-    this.setMatching()
   }
 
+  /**
+   * Unsubscribe from every device.
+   */
   componentWillUnmount () {
     const { desktop, laptop, tablet, mobile } = this.props
 
@@ -80,6 +79,9 @@ class RenderAtComponent extends Component {
     }
   }
 
+  /**
+   * Set in the state if the current device is matching or not.
+   */
   setMatching () {
     const { isDesktop, isLaptop, isTablet, isMobile } = this.state
 
