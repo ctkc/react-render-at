@@ -1,6 +1,6 @@
 {
   "name": "@bnt-ar/react-render-at",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "private": false,
   "description": "Render components dynamically based on the device",
   "main": "dist/index.js",
