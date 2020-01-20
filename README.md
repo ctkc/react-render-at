@@ -5,7 +5,7 @@
 
 ### Installation
 
-    npm install react-render-at
+    npm install @bnt-ar/react-render-at
     
 ### Breakpoints
 | Device | Min | Max
