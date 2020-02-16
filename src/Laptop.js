@@ -5,6 +5,8 @@ class Laptop extends Device {
   /**
    * Check if the current screen width match with the specified breakpoints
    * and call the listener.
+   *
+   * @override
    */
   update () {
     this.listener(

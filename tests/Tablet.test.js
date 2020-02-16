@@ -3,7 +3,7 @@ import Tablet from '../src/Tablet'
 let isMatching
 let tablet
 
-beforeEach(() => {
+beforeAll(() => {
   Object.defineProperty(window, 'matchMedia', {
     writable: true,
     value: jest.fn().mockImplementation(query => ({
@@ -21,8 +21,9 @@ beforeEach(() => {
   tablet = new Tablet().onChange(value => { isMatching = value })
 })
 
-afterEach(() => {
+afterAll(() => {
   isMatching = null
+  tablet.unsubscribe()
 })
 
 describe('When onChange method is called', () => {
@@ -43,16 +44,5 @@ describe('When onChange method is called', () => {
     window.dispatchEvent(new Event('resize'))
 
     expect(isMatching).toBe(false)
-  })
-})
-
-describe('When remove method is called', () => {
-  it('is should remove ResizeListener instance and unbind resize event', () => {
-    const removeSpy = jest.spyOn(Tablet.prototype, 'unsubscribe')
-
-    tablet.unsubscribe()
-
-    expect(removeSpy).toBeCalledTimes(1)
-    expect(tablet.resizeListener).toBe(null)
   })
 })

@@ -9,11 +9,12 @@
     "url": "git+https://github.com/BNT-AR/react-render-at"
   },
   "scripts": {
-    "publish": "rm -rf ./dist && webpack",
+    "build": "rm -rf ./dist && rollup -c",
+    "files": "npm pack && tar -xvzf *.tgz && rm -rf package *.tgz",
     "test": "jest --coverage",
     "test:watch": "jest --watch",
-    "lint": "eslint tests/* src/* webpack.config.js",
-    "lint:fix": "eslint tests/* src/* webpack.config.js --fix"
+    "lint": "eslint tests/* src/* rollup.config.js",
+    "lint:fix": "eslint tests/* src/* rollup.config.js --fix"
   },
   "author": "Brave New Technology",
   "keywords": [
@@ -32,10 +33,10 @@
     "react-dom": "^16.12.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.7.7",
-    "@babel/core": "^7.7.7",
-    "@babel/preset-react": "^7.7.4",
-    "babel-loader": "^8.0.6",
+    "@babel/preset-env": "^7.8.4",
+    "@babel/preset-react": "^7.8.3",
+    "@rollup/plugin-commonjs": "^11.0.2",
+    "@rollup/plugin-node-resolve": "^7.1.1",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "eslint": "^6.8.0",
@@ -48,9 +49,11 @@
     "jest": "^24.9.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "sinon": "^8.0.1",
-    "webpack": "^4.41.4",
-    "webpack-cli": "^3.3.10"
+    "rollup": "^1.31.1",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-peer-deps-external": "^2.2.2",
+    "rollup-plugin-uglify": "^6.0.4",
+    "sinon": "^8.0.1"
   },
   "jest": {
     "testPathIgnorePatterns": [

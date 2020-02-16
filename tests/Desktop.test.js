@@ -1,9 +1,10 @@
 import Desktop from '../src/Desktop'
+import ResizeListener from '../src/ResizeListener'
 
 let isMatching
 let desktop
 
-beforeEach(() => {
+beforeAll(() => {
   Object.defineProperty(window, 'matchMedia', {
     writable: true,
     value: jest.fn().mockImplementation(query => ({
@@ -21,8 +22,9 @@ beforeEach(() => {
   desktop = new Desktop().onChange(value => { isMatching = value })
 })
 
-afterEach(() => {
+afterAll(() => {
   isMatching = null
+  desktop.unsubscribe()
 })
 
 describe('When onChange method is called', () => {
@@ -43,16 +45,5 @@ describe('When onChange method is called', () => {
     window.dispatchEvent(new Event('resize'))
 
     expect(isMatching).toBe(false)
-  })
-})
-
-describe('When remove method is called', () => {
-  it('is should remove ResizeListener instance and unbind resize event', () => {
-    const desktopSpy = jest.spyOn(Desktop.prototype, 'unsubscribe')
-
-    desktop.unsubscribe()
-
-    expect(desktopSpy).toBeCalledTimes(1)
-    expect(desktop.resizeListener).toBe(null)
   })
 })

@@ -5,18 +5,9 @@ class Device {
    * @constructor
    */
   constructor () {
-    this.listener = () => {}
-    this.resizeListener = null
-
-    this.init()
-  }
-
-  /**
-   * Create instance and listen resize event.
-   */
-  init () {
     this.resizeListener = new ResizeListener()
     this.resizeListener.onChange(() => { this.update() })
+    this.listener = null
   }
 
   /**
@@ -25,7 +16,7 @@ class Device {
   unsubscribe () {
     this.resizeListener.removeEventListener()
     this.resizeListener = null
-    this.listener = () => {}
+    this.listener = null
   }
 
   /**
