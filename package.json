@@ -1,5 +1,5 @@
 {
-  "name": "@bnt-ar/react-render-at",
+  "name": "react-render-at",
   "version": "0.1.0",
   "private": false,
   "description": "Render components dynamically based on the device",
@@ -16,7 +16,10 @@
     "lint": "eslint tests/* src/* rollup.config.js",
     "lint:fix": "eslint tests/* src/* rollup.config.js --fix"
   },
-  "author": "Brave New Technology",
+  "author": {
+    "name": "Juan Ignacio Settecase",
+    "email": "settecasejuan@gmail.com"
+  },
   "keywords": [
     "react",
     "render",

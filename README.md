@@ -1,11 +1,9 @@
 
 # React Render At
 
-![Package Version](https://img.shields.io/github/package-json/v/BNT-AR/react-render-at/master?color=blue&label=version&style=flat-square)
-
 ### Installation
 
-    npm install @bnt-ar/react-render-at
+    npm install react-render-at
     
 ### Breakpoints
 | Device | Min | Max
