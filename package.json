@@ -6,7 +6,7 @@
   "main": "dist/index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/BNT-AR/react-render-at"
+    "url": "git+https://github.com/ctkc/react-render-at"
   },
   "scripts": {
     "build": "rm -rf ./dist && rollup -c",
