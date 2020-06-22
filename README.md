@@ -132,8 +132,8 @@ RenderAt.setBreakpoints({
 })
 ```
 #### Available object props
-| Prop | Type
-| -- | -- | -- |
+| Prop | Type |
+| -- | -- |
 | desktop | { minWidth: number, maxWidth: number | Infinity }
 | laptop  | { minWidth: number, maxWidth: number | Infinity }
 | tablet | { minWidth: number, maxWidth: number | Infinity }
