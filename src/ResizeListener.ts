@@ -25,26 +25,30 @@ class ResizeListener {
    * Attach the resize event to window.
    */
   addEventListener(): void {
-    window.addEventListener(
-      'resize',
-      debounce(
-        () => this.listener && this.listener(),
-        ResizeListener.debounceTime
-      )
-    );
+    if (typeof window !== 'undefined') {
+      window.addEventListener(
+        'resize',
+        debounce(
+          () => this.listener && this.listener(),
+          ResizeListener.debounceTime
+        )
+      );
+    }
   }
 
   /**
    * Remove the resize event from window.
    */
   removeEventListener(): void {
-    window.removeEventListener(
-      'resize',
-      debounce(
-        () => this.listener && this.listener(),
-        ResizeListener.debounceTime
-      )
-    );
+    if (typeof window !== 'undefined') {
+      window.removeEventListener(
+        'resize',
+        debounce(
+          () => this.listener && this.listener(),
+          ResizeListener.debounceTime
+        )
+      );
+    }
   }
 
   /**
