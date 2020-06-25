@@ -58,7 +58,7 @@ function App(props) {
      props.isTablet && <p>Content in Tablet</p>
    }
    {
-     props.isLaptop && <p>Content in Mobile</p>
+     props.isMobile && <p>Content in Mobile</p>
    }
   )
 }
@@ -75,6 +75,8 @@ export default withRenderAt(App)
 | isMobile | boolean
 
 - Via Hooks
+
+You have to wrap your app within `RenderAtProvider` and then:
 
 ```js
 import React from 'react'
@@ -112,7 +114,7 @@ export default App
 
 ### Config
 
-You can change the default debounce by calling `setDebounceTime` at the beginning of your app:
+You can change the default debounce time by calling `setDebounceTime` at the beginning of your app:
 
 ```js
 import React from 'react'
