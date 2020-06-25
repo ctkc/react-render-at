@@ -9,6 +9,7 @@ package-lock.json
 /coverage
 /tests
 /src
+/dist/lib
 
 .eslintrc
 .prettierrc

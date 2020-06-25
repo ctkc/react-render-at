@@ -13,11 +13,13 @@ export default [
         file: packageJSON.main,
         format: 'cjs',
         exports: 'named',
+        sourcemap: false,
       },
       {
         file: packageJSON.module,
         format: 'es',
         exports: 'named',
+        sourcemap: false,
       },
     ],
     plugins: [
@@ -26,15 +28,6 @@ export default [
       resolve(),
       commonjs({
         include: ['node_modules/**'],
-        namedExports: {
-          'node_modules/react/index.js': [
-            'Children',
-            'Component',
-            'PropTypes',
-            'createElement',
-          ],
-          'node_modules/react-dom/index.js': ['render'],
-        },
       }),
     ],
   },
