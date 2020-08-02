@@ -1,19 +1,20 @@
+import { useFakeTimers, SinonFakeTimers } from 'sinon';
+import SpyInstance = jest.SpyInstance;
+
 import ResizeListener from './../src/ResizeListener';
-import * as sinon from 'sinon';
 import { debounce } from '../src/utils/helpers';
 
-let resizeListener;
-let clock;
-let windowSpy;
+let resizeListener: ResizeListener;
+let clock: SinonFakeTimers;
+let windowSpy: SpyInstance;
 
 beforeEach(() => {
   resizeListener = new ResizeListener();
-  clock = sinon.useFakeTimers();
+  clock = useFakeTimers();
   windowSpy = jest.spyOn(window, 'window', 'get');
 });
 
 afterEach(() => {
-  resizeListener = null;
   clock.restore();
   windowSpy.mockRestore();
 });

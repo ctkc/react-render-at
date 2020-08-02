@@ -3,11 +3,8 @@ import { Listener } from './types';
 
 class ResizeListener {
   public listener?: Listener;
-  private static debounceTime = 250;
+  private static debounceTime = 200;
 
-  /**
-   * @constructor
-   */
   constructor() {
     this.addEventListener();
   }

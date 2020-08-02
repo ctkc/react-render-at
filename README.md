@@ -1,5 +1,6 @@
-
 # React Render At
+
+![version](https://img.shields.io/github/package-json/v/ctkc/react-render-at) ![license](https://img.shields.io/github/license/ctkc/react-render-at?color=blue) ![size](https://img.shields.io/bundlephobia/min/react-render-at)
 
 ### Installation
 
@@ -15,7 +16,7 @@
 
 ### Usage
 
-There are three ways you can use the package:  
+This package can be used in three different ways:
   
 - Via component
 
@@ -40,7 +41,7 @@ function App () {
 | mobile | boolean | no
 | fragment | boolean | no
 
-- Via High Order Component
+- Via Higher Order Component
 
 ```js
 import React from 'react'

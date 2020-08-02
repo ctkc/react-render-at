@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component, PropsWithChildren } from 'react';
 import Page from './Page';
 
 class App extends Component {
-  public pageRef;
+  public pageRef: unknown;
 
-  constructor(props: Record<string, unknown>) {
+  constructor(props: PropsWithChildren<any>) {
     super(props);
     this.pageRef = null;
   }

@@ -1,46 +1,42 @@
-import React, { Component, ReactElement } from 'react';
+import React, {
+  PropsWithChildren,
+  ReactElement,
+  useEffect,
+  useState,
+} from 'react';
+import PropTypes from 'prop-types';
+
 import ResizeListener from './ResizeListener';
 import RenderAt from './RenderAt';
 
-interface Props {
+type Props = {
   fragment?: boolean;
   desktop?: boolean;
   laptop?: boolean;
   tablet?: boolean;
   mobile?: boolean;
-}
+};
 
-interface State {
-  isMatching: boolean;
-}
+const RenderAtComponent = ({
+  desktop,
+  laptop,
+  tablet,
+  mobile,
+  fragment,
+  children,
+  ...props
+}: PropsWithChildren<Props>): ReactElement | null => {
+  const [isMatching, setIsMatching] = useState(false);
 
-class RenderAtComponent extends Component<Props, State> {
-  private resizeListener: ResizeListener;
-  /**
-   * @constructor
-   * @param props
-   */
-  constructor(props: Props) {
-    super(props);
+  useEffect(() => {
+    let isDesktop = false,
+      isLaptop = false,
+      isMobile = false,
+      isTablet = false;
 
-    this.resizeListener = new ResizeListener();
+    const resizeListener = new ResizeListener();
 
-    this.state = {
-      isMatching: false,
-    };
-  }
-
-  /**
-   * Subscribe to resize event for every device.
-   */
-  componentDidMount(): void {
-    const { desktop, laptop, tablet, mobile } = this.props;
-    let isDesktop = false;
-    let isLaptop = false;
-    let isTablet = false;
-    let isMobile = false;
-
-    this.resizeListener.onChange(() => {
+    resizeListener.onChange(() => {
       if (desktop) {
         isDesktop = RenderAt.isScreenMatchingWith('desktop');
       }
@@ -57,34 +53,32 @@ class RenderAtComponent extends Component<Props, State> {
         isMobile = RenderAt.isScreenMatchingWith('mobile');
       }
 
-      this.setState({
-        isMatching: isDesktop || isLaptop || isTablet || isMobile,
-      });
+      setIsMatching(isDesktop || isLaptop || isTablet || isMobile);
     });
+
+    return () => {
+      resizeListener.removeEventListener();
+    };
+  }, [desktop, laptop, mobile, tablet]);
+
+  if (!isMatching) {
+    return null;
   }
 
-  /**
-   * Unsubscribe from resize event.
-   */
-  componentWillUnmount(): void {
-    this.resizeListener.removeEventListener();
+  if (fragment) {
+    return <>{children}</>;
   }
 
-  render(): ReactElement | null {
-    // Removing props.
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { desktop, laptop, tablet, mobile, ...props } = this.props;
+  return <div {...props}>{children}</div>;
+};
 
-    if (!this.state.isMatching) {
-      return null;
-    }
-
-    if (this.props.fragment) {
-      return <>{this.props.children}</>;
-    }
-
-    return <div {...props}>{this.props.children}</div>;
-  }
-}
+RenderAtComponent.propTypes = {
+  fragment: PropTypes.bool,
+  desktop: PropTypes.bool,
+  laptop: PropTypes.bool,
+  tablet: PropTypes.bool,
+  mobile: PropTypes.bool,
+  children: PropTypes.any,
+};
 
 export default RenderAtComponent;

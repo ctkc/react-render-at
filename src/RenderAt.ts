@@ -6,7 +6,7 @@ class RenderAt {
   private static breakpoints = defaultBreakpoints;
 
   /**
-   * Change the default debounce time of 250ms.
+   * Change the default debounce time of 200ms.
    *
    * @param wait
    */

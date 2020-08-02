@@ -6,6 +6,7 @@ import React, {
   useEffect,
   useState,
 } from 'react';
+
 import ResizeListener from './ResizeListener';
 import { RenderAtProps } from './types';
 import RenderAt from './RenderAt';

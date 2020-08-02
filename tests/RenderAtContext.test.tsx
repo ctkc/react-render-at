@@ -1,12 +1,11 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import App from './components/hoc/App';
-import Page from './components/hoc/Page';
-import ResizeListener from '../src/ResizeListener';
 import { desktop, laptop } from './devices';
+import Index from './components/hooks';
+import App from './components/hoc/App';
 
-describe('RenderAtHOC isDesktop prop test', () => {
+describe('RenderAtContext isDesktop prop test', () => {
   it('it should render the content in desktop resolutions', () => {
     Object.defineProperty(window, 'matchMedia', {
       writable: true,
@@ -22,7 +21,7 @@ describe('RenderAtHOC isDesktop prop test', () => {
       })),
     });
 
-    const app = mount(<App />);
+    const app = mount(<Index />);
 
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
@@ -33,7 +32,7 @@ describe('RenderAtHOC isDesktop prop test', () => {
   });
 });
 
-describe('RenderAtHOC isLaptop prop test', () => {
+describe('RenderAtContext isLaptop prop test', () => {
   it('it should render the content in laptop resolutions', () => {
     Object.defineProperty(window, 'matchMedia', {
       writable: true,
@@ -61,7 +60,7 @@ describe('RenderAtHOC isLaptop prop test', () => {
   });
 });
 
-describe('RenderAtHOC isTablet prop test', () => {
+describe('RenderAtContext isTablet prop test', () => {
   it('it should render the content in tablet resolutions', () => {
     Object.defineProperty(window, 'matchMedia', {
       writable: true,
@@ -89,7 +88,7 @@ describe('RenderAtHOC isTablet prop test', () => {
   });
 });
 
-describe('RenderAtHOC isMobile prop test', () => {
+describe('RenderAtContext isMobile prop test', () => {
   it('it should render the content in moible resolutions', () => {
     Object.defineProperty(window, 'matchMedia', {
       writable: true,
@@ -113,29 +112,5 @@ describe('RenderAtHOC isMobile prop test', () => {
     window.dispatchEvent(new Event('resize'));
 
     expect(app.text()).toBe('Is Mobile');
-  });
-});
-
-describe('When component will unmount', () => {
-  it('it should call remove event listener', () => {
-    const deviceRemoveSpy = jest.spyOn(
-      ResizeListener.prototype,
-      'removeEventListener'
-    );
-
-    const component = mount(<App />);
-
-    component.unmount();
-
-    expect(deviceRemoveSpy).toBeCalledTimes(1);
-  });
-});
-
-describe('When ref is passed', () => {
-  it('it should return the child component ref', () => {
-    const component = mount(<App />);
-
-    expect(component.find(Page)).toHaveLength(1);
-    expect(component.instance().pageRef.dummyMethod()).toBe(true);
   });
 });

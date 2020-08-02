@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import withRenderAt, { InjectedRenderAtProps } from '../../src/RenderAtHOC';
+import withRenderAt, { InjectedRenderAtProps } from '../../../src/RenderAtHOC';
 
 class Page extends Component<InjectedRenderAtProps> {
   dummyMethod(): boolean {
