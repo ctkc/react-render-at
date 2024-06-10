@@ -1,6 +1,6 @@
 {
   "name": "react-render-at",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "private": false,
   "description": "Render components dynamically based on the device",
   "main": "dist/index.js",
